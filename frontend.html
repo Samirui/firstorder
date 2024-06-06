@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIS Data Tool with Map</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>GIS Data CRUD Tool</h1>
+
+        <!-- File Upload -->
+        <div class="file-upload">
+            <input type="file" id="fileInput" accept=".csv" onchange="loadFile(event)">
+            <div id="fileName"></div>
+        </div>
+
+        <!-- Search Section -->
+        <div id="search" class="form-group">
+            <input type="text" id="searchValue" placeholder="Enter Point ID">
+            <button onclick="search()">Search</button>
+            <button onclick="showAddForm()">Add New Point</button>
+        </div>
+
+        <!-- Edit Form - hidden by default -->
+        <div id="editForm" class="form-group hidden">
+           PointID:<input type="text" id="editPointID" placeholder="Point ID" readonly><br>
+           Latitude:<input type="text" id="editLatitude" placeholder="Latitude"><br>
+           Longitude<input type="text" id="editLongitude" placeholder="Longitude"><br>
+           OrthHght <input type="text" id="editOrthHght" placeholder="Orth Hght"><br>
+           Location <input type="text" id="editLocation" placeholder="Location"><br>
+            <button onclick="update()">Update</button>
+            <button onclick="cancelEdit()">Cancel</button>
+        </div>
+
+        <!-- Add Form - hidden by default -->
+        <div id="addForm" class="form-group hidden">
+            <input type="text" id="addPointID" placeholder="Point ID">
+            <input type="text" id="addLatitude" placeholder="Latitude">
+            <input type="text" id="addLongitude" placeholder="Longitude">
+            <input type="text" id="addOrthHght" placeholder="Orth Hght">
+            <input type="text" id="addLocation" placeholder="Location">
+            <button onclick="add()">Add Point</button>
+            <button onclick="cancelAdd()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
